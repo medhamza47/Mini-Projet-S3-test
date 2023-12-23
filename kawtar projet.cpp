@@ -2,7 +2,6 @@
 #include<string.h>
 #include<stdlib.h>
 #include<ctype.h>
-//berrada 7ayawan
 typedef struct {
 	char code[50],nom[50],adresse[50],nationalite[50];
 }fournisseur;
@@ -13,42 +12,42 @@ typedef struct {
 	fournisseur frs;
 }bijou;
 
-void ajouter_bijou (bijou *a,int N) {
-	for(int i=0; i<N; i++) {
+void ajouter_bijou (bijou *b,int T) {
+	for(int i=0; i<T; i++) {
 		printf("Entrez la marque du bijou %d\n",i+1);
-		scanf("%s",(a+i)->marque);
+		scanf("%s",(b+i)->marque);
 		/*	printf("Entrez le code du bijou %d\n",i+1);
-		scanf("%d",&(a+i)->code);
+		scanf("%d",&(b+i)->code);
 	printf("Entrez l'annee de fabrication du bijou %d\n",i+1);
-		scanf("%d",&(a+i)->annee);
+		scanf("%d",&(b+i)->annee);
 		printf("Entrez le type du bijou %d\n",i+1);
-		scanf("%s",(a+i)->type);
+		scanf("%s",(b+i)->type);
 		printf("Entrez le prix du bijou %d\n",i+1);
-		scanf("%d",&(a+i)->prix);
+		scanf("%d",&(b+i)->prix);
 		printf("Entrez le code du fournisseur du bijou %d\n",i+1);
-		scanf("%s",(a+i)->frs.code); 
+		scanf("%s",(b+i)->frs.code); 
 		printf("Entrez le nom du fournisseur du bijou %d\n",i+1);
-		scanf("%s",(a+i)->frs.nom);
+		scanf("%s",(b+i)->frs.nom);
 		printf("Entrez l'adresse du fournisseur du bijou %d\n",i+1);
-		scanf("%s",(a+i)->frs.adresse);*/
+		scanf("%s",(b+i)->frs.adresse);*/
 		printf("Entrez la nationalite du fournisseur du bijou %d\n",i+1);
-		scanf("%s",(a+i)->frs.nationalite);
+		scanf("%s",(b+i)->frs.nationalite);
 	}
 }
-void afficher_bijou (bijou *a, int N) {
+void afficher_bijou (bijou *b, int N) {
 	printf("Voici les bijoux de la bijouterie :\n");
 	for (int i=0; i<N; i++) {
 		printf("Bijou %d :\n",i+1);
-		printf("- Marque : %s\n",(a+i)->marque);
-		//printf("- Code : %d\n",(a+i)->code);
-		//printf("- Annee de fabrication : %d\n",(a+i)->annee);
-		//printf("- Type : %s\n",(a+i)->type);
-		//printf("- Prix : %d\n",(a+i)->prix);
+		printf("- Marque : %s\n",(b+i)->marque);
+		//printf("- Code : %d\n",(b+i)->code);
+		//printf("- Annee de fabrication : %d\n",(b+i)->annee);
+		//printf("- Type : %s\n",(b+i)->type);
+		//printf("- Prix : %d\n",(b+i)->prix);
 		//printf("- Fournisseur :\n");
-		printf("- Code : %s\n",(a+i)->frs.code);
-		//printf("- Nom : %s\n",(a+i)->frs.nom);
-		//printf("- Adresse : %s\n",(a+i)->frs.adresse);
-		//printf("- Nationalite : %s\n",(a+i)->frs.nationalite);
+		printf("- Code : %s\n",(b+i)->frs.code);
+		//printf("- Nom : %s\n",(b+i)->frs.nom);
+		//printf("- Adresse : %s\n",(b+i)->frs.adresse);
+		//printf("- Nationalite : %s\n",(b+i)->frs.nationalite);
 	}
 }
 void afficher_bijoux_ayant(bijou *b, int T) {
@@ -99,9 +98,49 @@ void afficher_bijoux_ayant(bijou *b, int T) {
 		printf("Natio introuvable");
 	}
 	}
-
 }
-
+void ajouter_bijou_selon(bijou *b, int T) {
+	char c;
+	printf("Entrez a,b,c ou d\n");
+	scanf(" %c",&c);
+	if (c=='a'){
+		b=(bijou*)realloc(b,(T+1)*sizeof(bijou));
+		T++;
+	for(int i=T;i>0;i--){
+		*(b+i)=*(b+i-1);	
+	}
+	ajouter_bijou(b,1);
+	printf("Ajout reussi, voici la nouvelle liste\n");
+	for (int i=0;i<T;i++) {
+		printf("Bijou %d:%s\n",i+1,(b+i)->marque);
+	}
+	}
+	if (c=='b'){
+		b=(bijou*)realloc(b,(T+1)*sizeof(bijou));
+			printf("Entrez la marque du bijou\n");
+		scanf("%s",(b+T)->marque);
+		/*	printf("Entrez le code du bijou\n");
+		scanf("%d",&(b+T)->code);
+	printf("Entrez l'annee de fabrication du bijou\n");
+		scanf("%d",&(b+T)->annee);
+		printf("Entrez le type du bijou\n");
+		scanf("%s",(b+T)->type);
+		printf("Entrez le prix du bijou\n");
+		scanf("%d",&(b+T)->prix);
+		printf("Entrez le code du fournisseur du bijou\n");
+		scanf("%s",(b+T)->frs.code); 
+		printf("Entrez le nom du fournisseur du bijou\n");
+		scanf("%s",(b+T)->frs.nom);
+		printf("Entrez l'adresse du fournisseur du bijou\n");
+		scanf("%s",(b+T)->frs.adresse);*/
+		printf("Entrez la nationalite du fournisseur du bijou\n");
+		scanf("%s",(b+T)->frs.nationalite);
+		printf("Ajout reussi, voici la nouvelle liste\n");
+	for (int i=0;i<T+1;i++) {
+		printf("Bijou %d:%s\n",i+1,(b+i)->marque);
+	}
+	}
+}
 int main () {
 	int T,choix;
 	bijou *b;
@@ -117,6 +156,7 @@ int main () {
 	switch (choix) {
 		case 1:afficher_bijou(b,T);break;
 		case 3:afficher_bijoux_ayant(b,T);break;
+		case 4:ajouter_bijou_selon(b,T);break;
 	}
 	}
 	return 0;
