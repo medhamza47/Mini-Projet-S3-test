@@ -16,7 +16,7 @@ void ajouter (livre *a,int N) {
 	for(int i=0; i<N; i++) {
 		printf("Entrez le titre du livre %d\n",i+1);
 		scanf("%s",(a+i)->titre);
-      poo:printf("Entrez la categorie du livre %d\n",i+1);
+    /*  poo:printf("Entrez la categorie du livre %d\n",i+1);
 		scanf("%s",(a+i)->categorie);
 	for(int j=0;j<strlen(((a+i)->categorie));j++){
 		l=isalpha((a+i)->categorie[j]);
@@ -47,7 +47,7 @@ void ajouter (livre *a,int N) {
 		if ((a+i)->aut.age>120 ||(a+i)->aut.age <1 ) {
 			printf("L'age est incorrecte \n");
 			goto here;
-		}
+		}*/
 	}
 }
 void afficher (livre *a, int N) {
@@ -290,8 +290,8 @@ int i,j,d,k=0;
     scanf("%s",u);
     if(u){
     for(j=0;j<N;j++){
-    d=strcmp((a+j)->titre,u);
-        if(d==0){
+  d=strcmp((a+j)->titre,u);
+        if(d=0){
         k++;
         }
     }
