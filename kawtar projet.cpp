@@ -2,7 +2,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<ctype.h>
-
+//berrada 7ayawan
 typedef struct {
 	char code[50],nom[50],adresse[50],nationalite[50];
 }fournisseur;
