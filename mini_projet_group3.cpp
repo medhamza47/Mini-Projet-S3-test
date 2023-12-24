@@ -194,12 +194,12 @@ void ajout_fin_liv(livre *a,int N){
 void ajout_pos_liv(livre *a,int N){
 	a=(livre*)realloc(a,(N+1)*sizeof(livre));
 		int e;
-		printf("entrer la position .");
+		printf("Entrer la position .");
 		scanf("%d",&e);
 		for(int i=N;i>e;i--){
 		*(a+i)=*(a+i-1);	
 	}
-	    	printf("Entrez le titre du livre \n");
+	    printf("Entrez le titre du livre \n");
 		scanf("%s",(a+e)->titre);
 		printf("Entrez la categorie du livre \n");
 		scanf("%s",(a+e)->categorie);
@@ -224,7 +224,7 @@ void ajout_pos_liv(livre *a,int N){
 void ajout_cote_liv(livre *a,int N){
 	a=(livre*)realloc(a,(N+1)*sizeof(livre));
 		int j,t,e;
-		printf("entrer le cote.");
+		printf("Entrer le cote");
 		scanf("%d",&e);
 		for(j=0;j<N;j++){
 			if(e==(a+j)->cote){
