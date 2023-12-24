@@ -17,10 +17,10 @@ void ajouter_bijou (bijou *b,int T) {
 		/*	printf("Entrez le code du bijou %d\n",i+1);
 		scanf("%d",&(b+i)->code);
 	printf("Entrez l'annee de fabrication du bijou %d\n",i+1);
-		scanf("%d",&(b+i)->annee);
-		printf("Entrez le type du bijou %d\n",i+1);
+	scanf("%d",&(b+i)->annee);
+			printf("Entrez le type du bijou %d\n",i+1);
 		scanf("%s",(b+i)->type);
-		printf("Entrez le prix du bijou %d\n",i+1);
+		/*printf("Entrez le prix du bijou %d\n",i+1);
 		scanf("%d",&(b+i)->prix);
 		printf("Entrez le code du fournisseur du bijou %d\n",i+1);
 		scanf("%s",(b+i)->frs.code); 
@@ -47,6 +47,44 @@ void afficher_bijou (bijou *b, int N) {
 		//printf("- Adresse : %s\n",(b+i)->frs.adresse);
 		//printf("- Nationalite : %s\n",(b+i)->frs.nationalite);
 	}
+}
+void afficher_bijou_fournisseur(bijou *b,int T){
+int r=0,c,*a,max;
+	a=(int*)malloc(T*sizeof(int));	
+	for(int i=0; i<T; i++) {
+		for(int j=0;j<T;j++){
+		c=strcmp((b+i)->type,(b+j)->type);
+		if(c==0){
+			r++;
+		}	
+		}*(a+i)=r;
+		r=0;
+		}
+max=*a;
+for(int i=1; i<T; i++){
+		if(*(a+i)>max){
+		  max=*(a+i);
+				}
+	}	
+	int p=0;	
+for(int i=0; i<T; i++){
+	if(*(a+i)==max && max!=1){
+		printf("- Marque : %s\n",(b+i)->marque);
+		//printf("- Code : %d\n",(b+i)->code);
+		//printf("- Annee de fabrication : %d\n",(b+i)->annee);
+		//printf("- Type : %s\n",(b+i)->type);
+		//printf("- Prix : %d\n",(b+i)->prix);
+		//printf("- Fournisseur :\n");
+		//printf("- Code : %s\n",(b+i)->frs.code);
+		//printf("- Nom : %s\n",(b+i)->frs.nom);
+		//printf("- Adresse : %s\n",(b+i)->frs.adresse);
+		//printf("- Nationalite : %s\n",(b+i)->frs.nationalite);
+		p++;
+	}
+	}
+	 if(p==0){
+	 printf("Il y a de meme contiter !!");
+	 }
 }
 void afficher_bijoux_ayant(bijou *b, int T) {
 	char c;int j=0,k=0,y=0,d;
@@ -160,8 +198,10 @@ void supprimer_bijou_selon(bijou *b ,int T){
 }
         if(p=='c'){
 	int r;
+	do{
 	printf("entrer la position :");
 	scanf("%d",&r);
+	}while(r>T||r<0);
 			for(int j=r;j<T;j++){	
 		*(b+j)=*(b+j+1);
 		}			
@@ -170,7 +210,7 @@ void supprimer_bijou_selon(bijou *b ,int T){
 }
  	 	if(p=='d'){
  	 		char *l;
- 	 		int k=0;
+ 	 		int k=0,e=-1;
         l=(char*)malloc(T*sizeof(char));
 		printf("entrer une marque :");
 	    scanf("%s",l);
@@ -179,6 +219,10 @@ void supprimer_bijou_selon(bijou *b ,int T){
 	   	k++;
 	   }
 	   } 
+	   if(k==0){
+	   	printf("Cette marque n'existe pas !!");
+	   	exit(0);
+	   }
 	for(int j=0;j<T;j++){
 		while(*l==*((b+j)->marque)){
             for(int i=j;i<T;i++){
@@ -198,6 +242,9 @@ if(e==(b+j)->prix){
 	r++;
 }
 }
+if(r==0){
+	   	printf("ce prix n'existe pas !!\n");
+	   }
 	for(int j=0;j<T;j++){
 		while(e==(b+j)->prix){
             for(int i=j;i<T;i++){
@@ -210,7 +257,7 @@ if(e==(b+j)->prix){
 }
                	 if(p=='f'){
          char l;
-    int o=0,p=0,g=0;
+    int o=0,c=0,p=0,g=0;
     printf("Entrez la lettre :\n");
     scanf(" %c",&l);
     for (int i=0; i<T; i++) {
@@ -224,6 +271,10 @@ if(e==(b+j)->prix){
             }
           }o=0;
 		}
+		if(g==0){
+	   	printf("Cette lettre n'exicte pas deux fois!!\n");
+	   	exit(0);
+	   }
 for(int i=0;i<T;i++){
 	for (int j=0;(b+i)->frs.nom[j]!='\0';j++) {
          while((b+i)->frs.nom[j]==l){
@@ -256,8 +307,8 @@ int main () {
 	scanf("%d",&choix);
 	switch (choix) {
 		case 1:afficher_bijou(b,T);break;
-		case 2:afficher_bijoux_ayant(b,T);break;
-		case 3:ajouter_bijou_selon(b,T);break;
+		case 2:afficher_bijou_fournisseur(b,T);break;
+		case 3:afficher_bijoux_ayant(b,T);break;
 		case 4:ajouter_bijou_selon(b,T);break;
 		case 5:supprimer_bijou_selon(b,T);break;
 		case 6:exit(0);break;
