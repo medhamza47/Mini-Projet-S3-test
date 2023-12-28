@@ -244,6 +244,10 @@ void ajouter_bijou_selon(bijou *b, int T) {
 				break;
 			}
 		}
+		if(j<3){
+			printf("Il n'existe pas cette marque 3 fois ou plus\n");
+		}
+		else 
 		printf("Ajout reussi!");
 	}
 	if(c=='x'){
