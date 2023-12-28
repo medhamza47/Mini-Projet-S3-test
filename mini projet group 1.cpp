@@ -252,7 +252,7 @@ void ajout_pos_bij(bijou *a,int N){
 		int e;
 		printf("Entrer la position .");
 		scanf("%d",&e);
-		for(int i=N;i>e;i--){
+		for(int i=N;i>e;i--){  //push
 		*(a+i)=*(a+i-1);	
 	}
 	    	printf("Entrez la marque du bijou \n");
