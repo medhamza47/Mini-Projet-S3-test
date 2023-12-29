@@ -255,7 +255,7 @@ void ajout_pos_bij(bijou *a,int N){
 		for(int i=N;i>e;i--){  //push
 		*(a+i)=*(a+i-1);	
 	}
-	    	printf("Entrez la marque du bijou \n");
+	    printf("Entrez la marque du bijou \n");
 		scanf("%s",(a+e)->marque);
     /*  poo:printf("Entrez le type du bijou\n",);
 		scanf("%s",(a+e)->type);
@@ -481,19 +481,19 @@ int main () {
 		ici7:case 3: printf("1-Par le code du fournisseur\n2-Par le code du bijou\n3-Par la nationnalite du fournisseur\n4-Retour\n");
 		scanf("%d",&s);
 		switch(s) {
-			case 1:affich_aut(khatm,n);hier5:printf("\n1-Retour\n2-Quitter le programme\n");
+			case 1:affich_fr(khatm,n);hier5:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici7;break;
 		case 2:exit(0);break;
 		default : printf("Choix erronnee!\n");goto hier5;}break;
-			case 2:affich_cote(khatm,n);hier6:printf("\n1-Retour\n2-Quitter le programme\n");
+			case 2:affich_code(khatm,n);hier6:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici7;break;
 		case 2:exit(0);break;
 		default : printf("Choix erronnee!\n");goto hier6;}break;
-			case 3:affich_cat(khatm,n);hier7:printf("\n1-Retour\n2-Quitter le programme\n");
+			case 3:affich_natio(khatm,n);hier7:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici7;break;
@@ -505,19 +505,19 @@ int main () {
 		ici6:case 4: printf("1-Au debut.\n2-A la fin du tableu.\n3-En une position donnee.\n4-Apres le 3eme bijou de sa meme marque\n5-Retour\n");
 				scanf("%d",&y);
 				switch(y){
-					case 1: ajout_debut_liv(khatm,n);afficher(khatm,n+1);hier8:printf("\n1-Retour\n2-Quitter le programme\n");
+					case 1: ajout_debut_bij(khatm,n);afficher(khatm,n+1);hier8:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici6;break;
 		case 2:exit(0);break;
 		default : printf("Choix erronnee!\n");goto hier8;}break;
-					case 2:ajout_fin_liv(khatm,n);afficher(khatm,n+1);hier9:printf("\n1-Retour\n2-Quitter le programme\n");
+					case 2:ajout_fin_bij(khatm,n);afficher(khatm,n+1);hier9:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici6;break;
 		case 2:exit(0);break;
 		default : printf("Choix erronnee!\n");goto hier9;}break;
-					case 3:ajout_pos_liv(khatm,n);afficher(khatm,n+1);hier10:printf("\n1-Retour\n2-Quitter le programme\n");
+					case 3:ajout_pos_bij(khatm,n);afficher(khatm,n+1);hier10:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici6;break;
@@ -536,19 +536,19 @@ int main () {
 		ici5:case 5:	printf("1-Au debut.\n2-A la fin.\n3-En une position donnee.\n4-Par marque.\n5-Par prix\n6-Dont le nom de fournisseur contient 2 fois une lettre donnée\n7-Retour\n");
 				scanf("%d",&w);	
 				switch(w){
-					case 1:supp_debut_liv(khatm,n);afficher(khatm,n-1);hier12:printf("\n1-Retour\n2-Quitter le programme\n");
+					case 1:supp_debut_bij(khatm,n);afficher(khatm,n-1);hier12:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici5;break;
 		case 2:exit(0);break;
 		default : printf("Choix erronnee!\n");goto hier12;}break;
-					case 2:supp_fin_liv(khatm,n);afficher(khatm,n-1);hier13:printf("\n1-Retour\n2-Quitter le programme\n");
+					case 2:supp_fin_bij(khatm,n);afficher(khatm,n-1);hier13:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici5;break;
 		case 2:exit(0);break;
 		default : printf("Choix erronnee!\n");goto hier13;}break;
-					case 3:supp_pos_liv(khatm,n);afficher(khatm,n-1);hier14:printf("\n1-Retour\n2-Quitter le programme\n");
+					case 3:supp_pos_bij(khatm,n);afficher(khatm,n-1);hier14:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici5;break;
