@@ -24,7 +24,7 @@ void ajouter (bijou *a,int N) {
 			if(l==0){
 			printf("Le type ne doit contenir que des lettres!\n");
 			goto poo;
-		}*/
+		}
 	 printf("Entrez le code du bijou %d\n",i+1);
 		scanf("%d",&(a+i)->code);
 	ici :	printf("Entrez l'annee de fabrication du bijou %d\n",i+1);
@@ -32,10 +32,10 @@ void ajouter (bijou *a,int N) {
 		if((a+i)->annee>2023 || (a+i)->annee <0) {
 			printf("L'annee est incorrecte !\n");
 			goto ici;
-		}
-		printf("Entrez le prix du bijou %d\n");
+		} */ 
+		printf("Entrez le prix du bijou %d\n",i+1);
 		scanf("%f",&(a+i)->prix);
-	foo:printf("Entrez le nom du fournisseur du bijou %d\n",i+1);
+	/*foo:printf("Entrez le nom du fournisseur du bijou %d\n",i+1);
 		scanf("%s",(a+i)->fr.nom);
 	for(int j=0;j<strlen(((a+i)->fr.nom));j++){
 		c=isalpha((a+i)->fr.nom[j]);
@@ -49,7 +49,7 @@ void ajouter (bijou *a,int N) {
 		here : printf("Entrez l'adresse du fournisseur de bijou %d\n",i+1);
 		scanf("%s",(a+i)->fr.adresse);
 		printf("Entrez la nationnalite du fournisseur du bijou %d\n",i+1);
-		scanf("%s",(a+i)->fr.natio);
+		scanf("%s",(a+i)->fr.natio);*/
 	}
 }
 void afficher (bijou *a, int N) {
@@ -165,6 +165,7 @@ void affich_natio(bijou *a,int N) {
 	}
 }
 void ajout_debut_bij(bijou *a,int N){
+	int c;
 	a=(bijou*)realloc(a,(N+1)*sizeof(bijou));
 	for(int i=N;i>0;i--){
 		*(a+i)=*(a+i-1);	
@@ -179,7 +180,7 @@ void ajout_debut_bij(bijou *a,int N){
 			if(l==0){
 			printf("Le type ne doit contenir que des lettres!\n");
 			goto poo;
-		}*/
+		}
 	 printf("Entrez le code du bijou \n");
 		scanf("%d",&(a+0)->code);
 	ici :	printf("Entrez l'annee de fabrication du bijou \n");
@@ -204,10 +205,11 @@ void ajout_debut_bij(bijou *a,int N){
 		here : printf("Entrez l'adresse du fournisseur de bijou\n");
 		scanf("%s",(a+0)->fr.adresse);
 		printf("Entrez la nationnalite du fournisseur du bijou\n");
-		scanf("%s",(a+0)->fr.natio);
+		scanf("%s",(a+0)->fr.natio);*/
 	
 	}	
 void ajout_fin_bij(bijou *a,int N){
+	int c;
 	a=(bijou*)realloc(a,(N+1)*sizeof(bijou));
 		printf("Entrez la marque du bijou \n");
 		scanf("%s",(a+N)->marque);
@@ -249,7 +251,7 @@ void ajout_fin_bij(bijou *a,int N){
 	}
 void ajout_pos_bij(bijou *a,int N){
 	a=(bijou*)realloc(a,(N+1)*sizeof(bijou));
-		int e;
+		int e,c;
 		printf("Entrer la position .");
 		scanf("%d",&e);
 		for(int i=N;i>e;i--){  //push
@@ -292,7 +294,7 @@ void ajout_pos_bij(bijou *a,int N){
 		printf("Entrez la nationnalite du fournisseur du bijou\n");
 		scanf("%s",(a+e)->fr.natio);
 	}
-void ajout_cote_liv(bijou *a,int N){
+/*void ajout_cote_liv(bijou *a,int N){
 	a=(bijou*)realloc(a,(N+1)*sizeof(bijou));
 		int j,t,e;
 		printf("Entrer le cote");
@@ -325,8 +327,7 @@ void ajout_cote_liv(bijou *a,int N){
 			printf("L'age est incorrecte \n");
 			goto here;
 		}
-	
-}
+}*/
 void supp_debut_bij(bijou *a , int N){
 	int i;
 	for( i=0;i<N-1;i++){ 
@@ -386,58 +387,63 @@ void supp_prix_bij(bijou *a , int N){
 int i,j,d,k=0;
     float u;
     tf:printf("Entrer le prix du bijou\n");
-    scanf("%f",u);
+    scanf("%f",&u);
     if(u){
     for(j=0;j<N;j++){
-    d=strcmp((a+j)->aut.cin,u);
-        if(d==0){
+      if(u==((a+j)->prix)){
         k++;
         }
     }
         if (k==0) {
-        printf("Le CIN de l'auteur n'existe pas!\n");
+        printf("Ce prix n'existe pas!\n");
         goto tf;
     }
     hier :for(i=0;i<N;i++){
-         if(*((a+i)->aut.cin)==*u){
+         if(((a+i)->prix)==u){
          for(int t=i;t<N;t++){
             *(a+t)=*(a+t+1);
             }
             goto hier;
        }
-    }   a=(livre*)realloc(a,(N-k)*sizeof(livre));
+    }   a=(bijou*)realloc(a,(N-k)*sizeof(bijou));
 	 afficher(a,N-k);
   }
 }
-void supp_lettre_liv(bijou *a, int N) {
-char l;
-    int o=0,p=0;;
-    ooo:printf("Entrez la lettre :\n");
+void supp_lettre_bij(bijou *a, int N) {
+    char l;
+    int b=0,c=0,p=0,M=0;
+    haha:	printf("Entrez la lettre :\n");
     scanf(" %c",&l);
     for (int i=0; i<N; i++) {
-        for (int j=0;(a+i)->titre[j]!='\0';j++) {
-            if((a+i)->titre[j]==l) {
-                o++;
-                break;
+        for (int j=0;(a+i)->fr.nom[j]!='\0';j++) {
+            if((a+i)->fr.nom[j]==l) {
+                b++;
+                if(b>=2){
+                	M++;
+                	break;
+				}
             }
-          }
+          }  
+		  b=0;
 		}
-       if(o==0) {
-		printf("La lettre n'existe pas!\n");
-		goto ooo;
-		} 
-hier :for(int i=0;i<N;i++){
-	for (int j=0;(a+i)->titre[j]!='\0';j++) {
-         if((a+i)->titre[j]==l){
+	if (M==0) {
+		printf("La lettre n'existe pas !\n");
+		goto haha;
+	}
+for(int i=0;i<N;i++){
+	for (int j=0;(a+i)->fr.nom[j]!='\0';j++) {
+         while((a+i)->fr.nom[j]==l){
          	p++;
-         for(int t=i;t<N;t++){
-            *(a+t)=*(a+t+1);
+         	if(p>=2){
+         for(int k=i;k<N;k++){
+            *(a+k)=*(a+k+1);
             }
-			goto hier;
-        }
-	 }
+		}
+    }
+}    p=0;
 }
-   afficher(a,N-p);
+a=(bijou*)realloc(a,(N-M)*sizeof(bijou));
+  afficher(a,N-M);
 }
 int main () {
 	int n,y,p,w,s,k;
@@ -470,7 +476,7 @@ int main () {
 		case 2:exit(0);break;
 		default : printf("Choix erronnee!\n");goto hier3;
 	};break;
-		case 2: cat(khatm,n);
+		case 2: typ(khatm,n);
 		hier4:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
@@ -502,7 +508,7 @@ int main () {
 			case 4:goto hier2;break;
 			default:printf("Choix erronnee!\n");goto ici7;
 		}; break;
-		ici6:case 4: printf("1-Au debut.\n2-A la fin du tableu.\n3-En une position donnee.\n4-Apres le 3eme bijou de sa meme marque\n5-Retour\n");
+		ici6:case 4: printf("1-Au debut.\n2-A la fin du tableau.\n3-En une position donnee.\n4-Apres le 3eme bijou de sa meme marque\n5-Retour\n");
 				scanf("%d",&y);
 				switch(y){
 					case 1: ajout_debut_bij(khatm,n);afficher(khatm,n+1);hier8:printf("\n1-Retour\n2-Quitter le programme\n");
@@ -523,12 +529,12 @@ int main () {
 		case 1:goto ici6;break;
 		case 2:exit(0);break;
 		default : printf("Choix erronnee!\n");goto hier10;}break;
-					case 4:ajout_cote_liv(khatm,n);afficher(khatm,n+1);hier11:printf("\n1-Retour\n2-Quitter le programme\n");
+				//	case 4:ajout_cote_liv(khatm,n);afficher(khatm,n+1);hier11:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici6;break;
 		case 2:exit(0);break;
-		default : printf("Choix erronnee!\n");goto hier11;}break;
+		default : printf("Choix erronnee!\n");/*goto hier11;*/}break;
 					case 5:goto hier2;break;
 					default:printf("Choix erronnee!\n");goto ici6;
 				}
@@ -554,19 +560,19 @@ int main () {
 		case 1:goto ici5;break;
 		case 2:exit(0);break;
 		default : printf("Choix erronnee!\n");goto hier14;}break;
-					case 4:supp_titre_liv(khatm,n);hier15:printf("\n1-Retour\n2-Quitter le programme\n");
+					case 4:supp_marque_bij(khatm,n);hier15:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici5;break;
 		case 2:exit(0);break;
 		default : printf("Choix erronnee!\n");goto hier15;}break;
-					case 5:supp_CIN_liv(khatm,n);hier16:printf("\n1-Retour\n2-Quitter le programme\n");
+					case 5:supp_prix_bij(khatm,n);hier16:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici5;break;
 		case 2:exit(0);break;
 		default : printf("Choix erronnee!\n");goto hier16;}break;
-					case 6:supp_lettre_liv(khatm,n);hier17:printf("\n1-Retour\n2-Quitter le programme\n");
+					case 6:supp_lettre_bij(khatm,n);hier17:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
 		case 1:goto ici5;break;
@@ -583,3 +589,4 @@ int main () {
 	else printf("Memoire saturee !\n");
 		return 0;
 }
+
