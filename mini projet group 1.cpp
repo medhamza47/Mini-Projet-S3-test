@@ -307,8 +307,12 @@ void ajout_fin_bij(bijou *a,int N){
 void ajout_pos_bij(bijou *a,int N){
 	a=(bijou*)realloc(a,(N+1)*sizeof(bijou));
 		int e,c,l;
-		printf("Entrer la position :");
+	hereitis:	printf("Entrer la position :");
 		scanf("%d",&e);
+		if (e<0 || e>N){
+			printf("La position n'existe pas!\n");
+			goto hereitis;
+		}
 		for(int i=N;i>e;i--){  
 		*(a+i)=*(a+i-1);	
 	}
@@ -349,40 +353,6 @@ void ajout_pos_bij(bijou *a,int N){
 		printf("Entrez la nationnalite du fournisseur du bijou\n");
 		scanf("%s",(a+e)->fr.natio);
 	}
-/*void ajout_cote_liv(bijou *a,int N){
-	a=(bijou*)realloc(a,(N+1)*sizeof(bijou));
-		int j,t,e;
-		printf("Entrer le cote");
-		scanf("%d",&e);
-		for(j=0;j<N;j++){
-			if(e==(a+j)->cote){
-				break;
-			}
-		}
-		for(int i=N;i>=j;i--){
-		*(a+i)=*(a+i-1);	
-	}
-	    	printf("Entrez le titre du livre \n");
-		scanf("%s",(a+j)->titre);
-		printf("Entrez la categorie du livre \n");
-		scanf("%s",(a+j)->categorie);
-		ici : printf("Entrez le cote et l'annee du livre \n");
-		scanf("%d %d",&(a+j)->cote,&(a+j)->annee);
-		if((a+j)->annee>2023 || (a+j)->annee <0) {
-			printf("L'annee est incorrecte !\n");
-			goto ici;
-		}
-		printf("Entrez le nom et le prenom de l'auteur du livre \n");
-		scanf("%s",(a+j)->aut.nom);
-		printf("Entrez le CIN de l'auteur du livre \n");
-		scanf("%s",(a+j)->aut.cin);
-		here : printf("Entrez l'age de l'auteur du livre \n");
-		scanf("%d",&(a+j)->aut.age);
-		if ((a+j)->aut.age>120 ||(a+j)->aut.age <1 ) {
-			printf("L'age est incorrecte \n");
-			goto here;
-		}
-}*/
 void supp_debut_bij(bijou *a , int N){
 	int i;
 	for( i=0;i<N-1;i++){ 
@@ -417,7 +387,7 @@ int i,j,d,k=0;
     scanf("%s",u);
     if(u){
     for(j=0;j<N;j++){
-        if(*((a+j)->marque)=*u){
+        if(*((a+j)->marque)==*u){
         k++;
         }
     }
@@ -440,9 +410,9 @@ int i,j,d,k=0;
 void supp_prix_bij(bijou *a , int N){
 int i,j,d,k=0;
     float u;
-    tf:printf("Entrer le prix du bijou\n");
+   tf:printf("Entrer le prix du bijou\n");
     scanf("%f",&u);
-    if(u){
+    
     for(j=0;j<N;j++){
       if(u==((a+j)->prix)){
         k++;
@@ -462,7 +432,6 @@ int i,j,d,k=0;
     }   a=(bijou*)realloc(a,(N-k)*sizeof(bijou));
 	 afficher(a,N-k);
   }
-}
 void supp_lettre_bij(bijou *a, int N) {
     char l;
     int b=0,c=0,p=0,M=0;
@@ -486,7 +455,7 @@ void supp_lettre_bij(bijou *a, int N) {
 	}
 for(int i=0;i<N;i++){
 	for (int j=0;(a+i)->fr.nom[j]!='\0';j++) {
-         while((a+i)->fr.nom[j]==l){
+         if((a+i)->fr.nom[j]==l){
          	p++;
          	if(p>=2){
          for(int k=i;k<N;k++){
@@ -641,6 +610,7 @@ int main () {
 	 }
 	}
 	else printf("Memoire saturee !\n");
+	
 		return 0;
 }
 
