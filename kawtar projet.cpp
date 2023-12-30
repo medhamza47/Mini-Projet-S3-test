@@ -16,38 +16,38 @@ void ajouter_bijou (bijou *b,int T) {
 	for(int i=0; i<T; i++) {
 		printf("Entrez la marque du bijou %d\n",i+1);
 		scanf("%s",(b+i)->marque);
-	/*	printf("Entrez le code du bijou %d\n",i+1);
+		printf("Entrez le code du bijou %d\n",i+1);
 		scanf("%d",&(b+i)->code);
 		printf("Entrez l'annee de fabrication du bijou %d\n",i+1);
 		scanf("%d",&(b+i)->annee);
 		printf("Entrez le type du bijou %d\n",i+1);
 		scanf("%s",(b+i)->type);
-	/  *printf("Entrez le prix du bijou %d\n",i+1);
+	  printf("Entrez le prix du bijou %d\n",i+1);
 		scanf("%d",&(b+i)->prix);
 		printf("Entrez le code du fournisseur du bijou %d\n",i+1);
-		scanf("%s",(b+i)->frs.code); */
-	/*	printf("Entrez le nom du fournisseur du bijou %d\n",i+1);
+		scanf("%s",(b+i)->frs.code); 
+		printf("Entrez le nom du fournisseur du bijou %d\n",i+1);
 		scanf("%s",(b+i)->frs.nom);
 		  printf("Entrez l'adresse du fournisseur du bijou %d\n",i+1);
 			scanf("%s",(b+i)->frs.adresse);
 			printf("Entrez la nationalite du fournisseur du bijou %d\n",i+1);
-			scanf("%s",(b+i)->frs.nationalite);*/
+			scanf("%s",(b+i)->frs.nationalite);
 	}
 }
 void afficher_bijou (bijou *b, int T) {
 for(int i=0;i<T;i++){
+	    printf("-------Le bijou%d------- : \n",i+1);
 		printf("- Marque : %s\n",(b+i)->marque);
-		//printf("- Code : %d\n",(b+i)->code);
-		//printf("- Annee de fabrication : %d\n",(b+i)->annee);
-		//printf("- Type : %s\n",(b+i)->type);
-		//printf("- Prix : %d\n",(b+i)->prix);
-		//printf("- Fournisseur :\n");
-		//printf("- Code : %s\n",(b+i)->frs.code);
-		//printf("- Nom : %s\n",(b+i)->frs.nom);
-		//printf("- Adresse : %s\n",(b+i)->frs.adresse);
-		//printf("- Nationalite : %s\n",(b+i)->frs.nationalite);
+		printf("- Code : %d\n",(b+i)->code);
+		printf("- Annee de fabrication : %d\n",(b+i)->annee);
+		printf("- Type : %s\n",(b+i)->type);
+		printf("- Prix : %d\n",(b+i)->prix);
+		printf("- Fournisseur :\n");
+		printf("- Code : %s\n",(b+i)->frs.code);
+		printf("- Nom : %s\n",(b+i)->frs.nom);
+		printf("- Adresse : %s\n",(b+i)->frs.adresse);
+		printf("- Nationalite : %s\n",(b+i)->frs.nationalite);
 }
-	
 	Sleep(2000);
 }                   
 void afficher_bijou_fournisseur(bijou *b,int T) {
@@ -73,15 +73,15 @@ void afficher_bijou_fournisseur(bijou *b,int T) {
 	for(int i=0; i<T; i++) {
 		if(*(a+i)==max && max!=1) {
 			printf("- Marque : %s\n",(b+i)->marque);
-			//printf("- Code : %d\n",(b+i)->code);
-			//printf("- Annee de fabrication : %d\n",(b+i)->annee);
-			//printf("- Type : %s\n",(b+i)->type);
-			//printf("- Prix : %d\n",(b+i)->prix);
-			//printf("- Fournisseur :\n");
-			//printf("- Code : %s\n",(b+i)->frs.code);
-			//printf("- Nom : %s\n",(b+i)->frs.nom);
-			//printf("- Adresse : %s\n",(b+i)->frs.adresse);
-			//printf("- Nationalite : %s\n",(b+i)->frs.nationalite);
+			printf("- Code : %d\n",(b+i)->code);
+			printf("- Annee de fabrication : %d\n",(b+i)->annee);
+			printf("- Type : %s\n",(b+i)->type);
+			printf("- Prix : %d\n",(b+i)->prix);
+			printf("- Fournisseur :\n");
+			printf("- Code : %s\n",(b+i)->frs.code);
+			printf("- Nom : %s\n",(b+i)->frs.nom);
+			printf("- Adresse : %s\n",(b+i)->frs.adresse);
+			printf("- Nationalite : %s\n",(b+i)->frs.nationalite);
 			p++;
 		}
 	}
@@ -105,7 +105,17 @@ void afficher_bijoux_ayant(bijou *b, int T) {
 
 		for (int i=0; i<T; i++) {
 			if(strcmp((b+i)->frs.code,code)==0) {
-				printf("Le bijou%d : %s\n",j+1,(b+i)->marque);
+				printf("-------Le bijou%d------- : \n",j+1);
+				printf("- Marque%d : %s\n",j+1,(b+i)->marque);
+				printf("- Code%d : %d\n",j+1,(b+i)->code);
+				printf("- Annee de fabrication%d : %d\n",j+1,(b+i)->annee);
+				printf("- Type%d : %s\n",j+1,(b+i)->type);
+				printf("- Prix%d : %d\n",j+1,(b+i)->prix);
+				printf("- Fournisseur%d :\n",j+1);
+				printf("- Code%d : %s\n",j+1,(b+i)->frs.code);
+				printf("- Nom%d : %s\n",j+1,(b+i)->frs.nom);
+				printf("- Adresse%d : %s\n",j+1,(b+i)->frs.adresse);
+				printf("- Nationalite%d : %s\n",j+1,(b+i)->frs.nationalite);
 				j++;
 			}
 		}
@@ -114,12 +124,22 @@ void afficher_bijoux_ayant(bijou *b, int T) {
 		}
 		Sleep(2000);
 	}
-	if(c=='b') {
+	if (c=='b') {
 		printf("Entrez code\n");
 		scanf("%d",&d);
 		for (int i=0; i<T; i++) {
 			if((b+i)->code==d) {
-				printf("Le bijou%d : %s\n",k+1,(b+i)->marque);
+				printf("-------Le bijou%d------- : \n",k+1);
+				printf("- Marque%d : %s\n",k+1,(b+i)->marque);
+				printf("- Code%d : %d\n",k+1,(b+i)->code);
+				printf("- Annee de fabrication%d : %d\n",k+1,(b+i)->annee);
+				printf("- Type%d : %s\n",k+1,(b+i)->type);
+				printf("- Prix%d : %d\n",k+1,(b+i)->prix);
+				printf("- Fournisseur%d :\n",k+1);
+				printf("- Code%d : %s\n",k+1,(b+i)->frs.code);
+				printf("- Nom%d : %s\n",k+1,(b+i)->frs.nom);
+				printf("- Adresse%d : %s\n",k+1,(b+i)->frs.adresse);
+				printf("- Nationalite%d : %s\n",k+1,(b+i)->frs.nationalite);				
 				k++;
 			}
 		}
@@ -135,7 +155,17 @@ void afficher_bijoux_ayant(bijou *b, int T) {
 
 		for (int i=0; i<T; i++) {
 			if(strcmp((b+i)->frs.nationalite,natio)==0) {
-				printf("Le bijou%d : %s\n",y+1,(b+i)->marque);
+				printf("-------Le bijou%d------- : \n",y+1);
+				printf("- Marque%d : %s\n",y+1,(b+i)->marque);
+				printf("- Code%d : %d\n",y+1,(b+i)->code);
+				printf("- Annee de fabrication%d : %d\n",y+1,(b+i)->annee);
+				printf("- Type%d : %s\n",y+1,(b+i)->type);
+				printf("- Prix%d : %d\n",y+1,(b+i)->prix);
+				printf("- Fournisseur%d :\n",y+1);
+				printf("- Code%d : %s\n",y+1,(b+i)->frs.code);
+				printf("- Nom%d : %s\n",y+1,(b+i)->frs.nom);
+				printf("- Adresse%d : %s\n",y+1,(b+i)->frs.adresse);
+				printf("- Nationalite%d : %s\n",y+1,(b+i)->frs.nationalite);
 				y++;
 			}
 		}
@@ -144,11 +174,11 @@ void afficher_bijoux_ayant(bijou *b, int T) {
 		}
 		Sleep(2000);
 	}
-	if (c='x') {
+	if (c=='x') {
 		exit(0);
 	}
 }
-void ajouter_bijou_selon(bijou *b, int *T) {
+void ajouter_bijou_selon(bijou *b, int T) {
 	char c;
 	do {
 		printf("Entrez a, b, c, d ou x\n");
@@ -156,19 +186,19 @@ void ajouter_bijou_selon(bijou *b, int *T) {
 	} while (c != 'a' && c != 'b' && c != 'c' && c != 'd' && c != 'x');
 	if (c=='a') {
 		int s=0;
-		b=(bijou*)realloc(b,*(T)*sizeof(bijou));
-		for(int i=*T; i>0; i--) {
+		b=(bijou*)realloc(b,(T)*sizeof(bijou));
+		for(int i=T; i>0; i--) {
 			*(b+i)=*(b+i-1);
-		}
+		}	
 		printf("Entrez la marque du bijou \n");
 		scanf("%s",(b)->marque);
-   	/*	printf("Entrez le code du bijou \n");
+   		printf("Entrez le code du bijou \n");
 		scanf("%d",&(b)->code);
 		printf("Entrez l'annee de fabrication du bijou \n");
 		scanf("%d",&(b)->annee);
 		printf("Entrez le type du bijou \n");
 		scanf("%s",(b)->type);
-		/*printf("Entrez le prix du bijou \n");
+		printf("Entrez le prix du bijou \n");
 		scanf("%d",&(b)->prix);
 		printf("Entrez le code du fournisseur du bijou \n");
 		scanf("%s",(b)->frs.code);
@@ -177,19 +207,16 @@ void ajouter_bijou_selon(bijou *b, int *T) {
 		printf("Entrez l'adresse du fournisseur du bijou \n");
 		scanf("%s",(b)->frs.adresse);
 		printf("Entrez la nationalite du fournisseur du bijou \n");
-		scanf("%s",(b)->frs.nationalite);*/
+		scanf("%s",(b)->frs.nationalite);
 		printf("Ajout reussi, voici la nouvelle liste\n");
-		printf("%d******************\n",*T);
-		printf("%d******************\n",T);
-		s++;
-		afficher_bijou (b,*(T+s));
+		afficher_bijou (b,T+1);
 		Sleep(2000);
 	}                  
 	if (c=='b') {
-		b=(bijou*)realloc(b,*(T+1)*sizeof(bijou));
+		b=(bijou*)realloc(b,(T+1)*sizeof(bijou));
 		printf("Entrez la marque du bijou\n");
-		scanf("%s",(b+*T)->marque);
-		/*	printf("Entrez le code du bijou\n");
+		scanf("%s",(b+T)->marque);
+		printf("Entrez le code du bijou\n");
 		scanf("%d",&(b+T)->code);
 		printf("Entrez l'annee de fabrication du bijou\n");
 		scanf("%d",&(b+T)->annee);
@@ -202,28 +229,38 @@ void ajouter_bijou_selon(bijou *b, int *T) {
 		printf("Entrez le nom du fournisseur du bijou\n");
 		scanf("%s",(b+T)->frs.nom);
 		printf("Entrez l'adresse du fournisseur du bijou\n");
-		scanf("%s",(b+T)->frs.adresse);*/
+		scanf("%s",(b+T)->frs.adresse);
 		printf("Entrez la nationalite du fournisseur du bijou\n");
-		scanf("%s",(b+*T)->frs.nationalite);
+		scanf("%s",(b+T)->frs.nationalite);
 		printf("Ajout reussi, voici la nouvelle liste\n");
-		for (int i=0; i<*(T+1); i++) {
-			printf("Bijou %d:%s\n",i+1,(b+i)->marque);
+		for (int i=0; i<(T+1); i++) {
+		printf("-------Le bijou%d------- : \n",i+1);
+		printf("- Marque : %s\n",(b+i)->marque);
+		printf("- Code : %d\n",(b+i)->code);
+		printf("- Annee de fabrication : %d\n",(b+i)->annee);
+		printf("- Type : %s\n",(b+i)->type);
+		printf("- Prix : %d\n",(b+i)->prix);
+		printf("- Fournisseur :\n");
+		printf("- Code : %s\n",(b+i)->frs.code);
+		printf("- Nom : %s\n",(b+i)->frs.nom);
+		printf("- Adresse : %s\n",(b+i)->frs.adresse);
+		printf("- Nationalite : %s\n",(b+i)->frs.nationalite);
 		}
 		Sleep(2000);
 	}
 	if (c=='c') {
 		int p;
-		b=(bijou*)realloc(b,*(T+1)*sizeof(bijou));
+		b=(bijou*)realloc(b,(T+1)*sizeof(bijou));
 		do {
 			printf("Entrez une position ou vous voulez ajouter");
 			scanf("%d",&p);
-		} while(p<0||p>*T);
-		for(int i=*T; i>p; i--) {
+		} while(p<0||p>T);
+		for(int i=T; i>p; i--) {
 			*(b+i)=*(b+i-1);
 		}
 		printf("Entrez la marque du bijou\n");
 		scanf("%s",(b+p)->marque);
-		/*	printf("Entrez le code du bijou\n");
+			printf("Entrez le code du bijou\n");
 		scanf("%d",&(b+p)->code);
 		printf("Entrez l'annee de fabrication du bijou\n");
 		scanf("%d",&(b+p)->annee);
@@ -236,32 +273,41 @@ void ajouter_bijou_selon(bijou *b, int *T) {
 		printf("Entrez le nom du fournisseur du bijou\n");
 		scanf("%s",(b+p)->frs.nom);
 		printf("Entrez l'adresse du fournisseur du bijou\n");
-		scanf("%s",(b+p)->frs.adresse);*/
+		scanf("%s",(b+p)->frs.adresse);
 		printf("Entrez la nationalite du fournisseur du bijou\n");
 		scanf("%s",(b+p)->frs.nationalite);
 		printf("Ajout reussi, voici la nouvelle liste\n");
-		for (int i=0; i<*(T+1); i++) {
-			printf("Bijou %d:%s\n",i+1,(b+i)->marque);
+		for (int i=0; i<(T+1); i++) {
+		printf("-------Le bijou%d------- : \n",i+1);
+		printf("- Marque : %s\n",(b+i)->marque);
+		printf("- Code : %d\n",(b+i)->code);
+		printf("- Annee de fabrication : %d\n",(b+i)->annee);
+		printf("- Type : %s\n",(b+i)->type);
+		printf("- Prix : %d\n",(b+i)->prix);
+		printf("- Fournisseur :\n");
+		printf("- Code : %s\n",(b+i)->frs.code);
+		printf("- Nom : %s\n",(b+i)->frs.nom);
+		printf("- Adresse : %s\n",(b+i)->frs.adresse);
+		printf("- Nationalite : %s\n",(b+i)->frs.nationalite);
 		}
 		Sleep(2000);
 	}
 	if (c=='d') {
 		char *l;
-		b=(bijou*)realloc(b,*(T+1)*sizeof(bijou));
+		b=(bijou*)realloc(b,(T+1)*sizeof(bijou));
 		l=(char*)malloc(15*sizeof(char));
 		printf("Entrez une marque\n");
 		scanf("%s",l);
 		int j=0;
-		for (int i=0; i<*T; i++) {
-			if(*l==*(b+i)->marque) {
+		for (int i=0; i<T; i++) {
+			if(*l==*((b+i)->marque)) {
 				j++;
 			}
 			if(j==3) {
-				for (int k=*T; k>i; k--) {
+				for (int k=T; k>i; k--) {
 					*(b+k)=*(b+k-1);
 				}
-
-				/*	printf("Entrez le code du bijou\n");
+				printf("Entrez le code du bijou\n");
 				scanf("%d",&(b+i)->code);
 				printf("Entrez l'annee de fabrication du bijou\n");
 				scanf("%d",&(b+i)->annee);
@@ -274,7 +320,7 @@ void ajouter_bijou_selon(bijou *b, int *T) {
 				printf("Entrez le nom du fournisseur du bijou\n");
 				scanf("%s",(b+i)->frs.nom);
 				printf("Entrez l'adresse du fournisseur du bijou\n");
-				scanf("%s",(b+i)->frs.adresse);*/
+				scanf("%s",(b+i)->frs.adresse);
 				printf("Entrez la nationalite du fournisseur du bijou\n");
 				scanf("%s",(b+i)->frs.nationalite);
 				break;
@@ -282,32 +328,32 @@ void ajouter_bijou_selon(bijou *b, int *T) {
 		}
 		if(j<3) {
 			printf("Il n'existe pas cette marque 3 fois ou plus\n");
-		} else
-			printf("Ajout reussi!");
+		} else{
+			printf("Ajout reussi!\n");
+			afficher_bijou(b,T+1);	}
 		Sleep(2000);
 	}
 	if(c=='x') {
 		exit(0);
 	}
 }
-void supprimer_bijou_selon(bijou *b,int *T) {
+void supprimer_bijou_selon(bijou *b,int T) {
 	char p;
 	do {
 		printf("Entrez a,b,c,d,e,fou x\n");
 		scanf(" %c",&p);
 	} while (p != 'a' && p != 'b' && p != 'c' && p != 'd' && p != 'e' && p != 'f' && p != 'x');
 	if(p=='a') {
-		for(int i=0; i<*(T-1); i++) {
+		for(int i=0; i<(T-1); i++) {
 			*(b+i)=*(b+i+1);
 		}
-		b=(bijou*)realloc(b,*(T-1)*sizeof(bijou));
-		T--;
-		afficher_bijou(b,*T);
+		b=(bijou*)realloc(b,(T-1)*sizeof(bijou));
+		afficher_bijou(b,T-1);
 		Sleep(2000);
 	}
 	if(p=='b') {
-		b=(bijou*)realloc(b,*(T-1)*sizeof(bijou));
-		afficher_bijou(b,*T);
+		b=(bijou*)realloc(b,(T-1)*sizeof(bijou));
+		afficher_bijou(b,T-1);
 		Sleep(2000);
 	}
 	if(p=='c') {
@@ -315,36 +361,36 @@ void supprimer_bijou_selon(bijou *b,int *T) {
 		do {
 			printf("Entrez la position :");
 			scanf("%d",&r);
-		} while(r>*T||r<0);
-		for(int j=r; j<*T; j++) {
+		} while(r>T||r<0);
+		for(int j=r; j<T; j++) {
 			*(b+j)=*(b+j+1);
 		}
-		b=(bijou*)realloc(b,*(T-1)*sizeof(bijou));
-		afficher_bijou(b,*(T-1));
+		b=(bijou*)realloc(b,(T-1)*sizeof(bijou));
+		afficher_bijou(b,(T-1));
 		Sleep(2000);
 	}
 	if(p=='d') {
 		char *l;
 		int k=0,e=-1;
-		l=(char*)malloc(*T*sizeof(char));
+		l=(char*)malloc(T*sizeof(char));
 		do {
 			printf("Entrez une marque :");
 			scanf("%s",l);
-			for(int j=0; j<*T; j++) {
+			for(int j=0; j<T; j++) {
 				if(*l==*((b+j)->marque)) {
 					k++;
 				}
 			}
 		} while(k==0);
-		for(int j=0; j<*T; j++) {
+		for(int j=0; j<T; j++) {
 			while(*l==*((b+j)->marque)) {
-				for(int i=j; i<*T; i++) {
+				for(int i=j; i<T; i++) {
 					*(b+i)=*(b+i+1);
 				}
 			}
 		}
-		b=(bijou*)realloc(b,*(T-k)*sizeof(bijou));
-		afficher_bijou(b,*(T-k));
+		b=(bijou*)realloc(b,(T-k)*sizeof(bijou));
+		afficher_bijou(b,(T-k));
 		Sleep(2000);
 	}
 	if(p=='e') {
@@ -352,21 +398,21 @@ void supprimer_bijou_selon(bijou *b,int *T) {
 		do {
 			printf("Entrez un prix :");
 			scanf("%d",&e);
-			for(int j=0; j<*T; j++) {
+			for(int j=0; j<T; j++) {
 				if(e==(b+j)->prix) {
 					r++;
 				}
 			}
 		} while(r==0);
-		for(int j=0; j<*T; j++) {
+		for(int j=0; j<T; j++) {
 			while(e==(b+j)->prix) {
-				for(int i=j; i<*T; i++) {
+				for(int i=j; i<T; i++) {
 					*(b+i)=*(b+i+1);
 				}
 			}
 		}
-		b=(bijou*)realloc(b,*(T-r)*sizeof(bijou));
-		afficher_bijou(b,*(T-r));
+		b=(bijou*)realloc(b,(T-r)*sizeof(bijou));
+		afficher_bijou(b,(T-r));
 		Sleep(2000);
 	}
 	if(p=='f') {
@@ -375,7 +421,7 @@ void supprimer_bijou_selon(bijou *b,int *T) {
 		do {
 			printf("Entrez la lettre :\n");
 			scanf(" %c",&l);
-			for (int i=0; i<*T; i++) {
+			for (int i=0; i<T; i++) {
 				for (int j=0; (b+i)->frs.nom[j]!='\0'; j++) {
 					if((b+i)->frs.nom[j]==l) {
 						o++;
@@ -388,12 +434,12 @@ void supprimer_bijou_selon(bijou *b,int *T) {
 				o=0;
 			}
 		} while(g==0);
-		for(int i=0; i<*T; i++) {
+		for(int i=0; i<T; i++) {
 			for (int j=0; (b+i)->frs.nom[j]!='\0'; j++) {
 				while((b+i)->frs.nom[j]==l) {
 					p++;
 					if(p>=2) {
-						for(int t=i; t<*T; t++) {
+						for(int t=i; t<T; t++) {
 							*(b+t)=*(b+t+1);
 						}
 					}
@@ -401,7 +447,7 @@ void supprimer_bijou_selon(bijou *b,int *T) {
 			}
 			p=0;
 		}
-		afficher_bijou(b,*(T-g));
+		afficher_bijou(b,(T-g));
 		Sleep(2000);
 	}
 	if(p=='x') {
@@ -432,10 +478,10 @@ int main () {
 					afficher_bijoux_ayant(b,T);
 					break;                  
 				case 4:
-					ajouter_bijou_selon(b,&T);
+					ajouter_bijou_selon(b,T);
 					break;                
 				case 5:                    
-					supprimer_bijou_selon(b,&T);
+					supprimer_bijou_selon(b,T);
 					break;                  
 				case 6:
 					exit(0);
