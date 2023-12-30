@@ -417,10 +417,9 @@ void supprimer_bijou_selon(bijou *b,int T) {
 	}
 	if(p=='f') {
 		char l;
-		int o=0,c=0,p=0,g=0;
-		do {
+		int o=0,c=0,p=0,g=0;	
 			printf("Entrez la lettre :\n");
-			scanf(" %c",&l);
+			scanf(" %c",&l);		
 			for (int i=0; i<T; i++) {
 				for (int j=0; (b+i)->frs.nom[j]!='\0'; j++) {
 					if((b+i)->frs.nom[j]==l) {
@@ -432,11 +431,10 @@ void supprimer_bijou_selon(bijou *b,int T) {
 					}
 				}
 				o=0;
-			}
-		} while(g==0);
+			}	
 		for(int i=0; i<T; i++) {
 			for (int j=0; (b+i)->frs.nom[j]!='\0'; j++) {
-				while((b+i)->frs.nom[j]==l) {
+				if((b+i)->frs.nom[j]==l) {
 					p++;
 					if(p>=2) {
 						for(int t=i; t<T; t++) {
