@@ -16,7 +16,7 @@ void ajouter (bijou *a,int N) {
 	for(int i=0; i<N; i++) {
 		printf("Entrez la marque du bijou %d\n",i+1);
 		scanf("%s",(a+i)->marque);
-    /*  poo:printf("Entrez le type du bijou %d\n",i+1);
+      poo:printf("Entrez le type du bijou %d\n",i+1);
 		scanf("%s",(a+i)->type);
 	for(int j=0;j<strlen(((a+i)->type));j++){
 		l=isalpha((a+i)->type[j]);
@@ -32,10 +32,10 @@ void ajouter (bijou *a,int N) {
 		if((a+i)->annee>2023 || (a+i)->annee <0) {
 			printf("L'annee est incorrecte !\n");
 			goto ici;
-		} */ 
+		} 
 		printf("Entrez le prix du bijou %d\n",i+1);
 		scanf("%f",&(a+i)->prix);
-	/*foo:printf("Entrez le nom du fournisseur du bijou %d\n",i+1);
+	foo:printf("Entrez le nom du fournisseur du bijou %d\n",i+1);
 		scanf("%s",(a+i)->fr.nom);
 	for(int j=0;j<strlen(((a+i)->fr.nom));j++){
 		c=isalpha((a+i)->fr.nom[j]);
@@ -49,22 +49,65 @@ void ajouter (bijou *a,int N) {
 		here : printf("Entrez l'adresse du fournisseur de bijou %d\n",i+1);
 		scanf("%s",(a+i)->fr.adresse);
 		printf("Entrez la nationnalite du fournisseur du bijou %d\n",i+1);
-		scanf("%s",(a+i)->fr.natio);*/
+		scanf("%s",(a+i)->fr.natio);
 	}
 }
 void afficher (bijou *a, int N) {
 	int k;
 	printf("Voici les bijoux de la boutique :\n");
 	for (int i=0; i<N; i++) {
-		printf("Marque du bijou %d : %s\n",i+1,(a+i)->marque);
-		printf("Code du bijou %d : %d\n",i+1,(a+i)->code);
-		printf("Annee de fabrication du bijou %d : %d\n",i+1,(a+i)->annee);
-		printf("Type du bijou %d : %s\n",i+1,(a+i)->type);
-		printf("Prix du bijou %d: %f\n",i+1,(a+i)->prix);
+		printf("------------>Le bijou%d<------------  \n",i+1);
+		printf("\tMarque du bijou                : %s\n",(a+i)->marque);
+		printf("\tCode du bijou                  : %d\n",(a+i)->code);
+		printf("\tAnnee de fabrication du bijou  : %d\n",(a+i)->annee);
+		printf("\tType du bijou                  : %s\n",(a+i)->type);
+		printf("\tPrix du bijou                  : %f\n",(a+i)->prix);
+		printf("\tNom de fournisseur             : %s\n",(a+i)->fr.nom);
+		printf("\tCode de fournisseur            : %s\n",(a+i)->fr.code1);
+		printf("\tAdresse de fournisseur         : %s\n",(a+i)->fr.adresse);
+		printf("\tNationalite de fournisseur     : %s\n",(a+i)->fr.natio);
+
 	}
 } 	
-void typ(bijou *a,int N) {
-	int r=0,c,*u,max,k=0;
+void afficher_plus_bijoux(bijou *a,int N) {
+	int r=0,c,*b,max;
+	b=(int*)malloc(N*sizeof(int));
+	for(int i=0; i<N; i++) {
+		for(int j=0; j<N; j++) {
+			c=strcmp((a+i)->type,(a+j)->type);
+			if(*((a+i)->type)==*((a+j)->type)) {
+				r++;
+			}
+		}
+		*(b+i)=r;
+		r=0;
+	}
+	max=*b;
+	for(int i=1; i<N; i++) {
+		if(*(b+i)>max) {
+			max=*(b+i);
+		}
+	}
+	int e=0;
+	for(int i=0; i<N; i++) {
+		if(*(b+i)==max && max!=1) {
+		printf("------------>Le bijou%d<------------  \n",i+1);
+		printf("\tMarque du bijou                : %s\n",(a+i)->marque);
+		printf("\tCode du bijou                  : %d\n",(a+i)->code);
+		printf("\tAnnee de fabrication du bijou  : %d\n",(a+i)->annee);
+		printf("\tType du bijou                  : %s\n",(a+i)->type);  //wach ran ndiro (a+i) ola (a+e)
+		printf("\tPrix du bijou                  : %f\n",(a+i)->prix);
+		printf("\tNom de fournisseur             : %s\n",(a+i)->fr.nom);
+		printf("\tCode de fournisseur            : %s\n",(a+i)->fr.code1);
+		printf("\tAdresse de fournisseur         : %s\n",(a+i)->fr.adresse);
+		printf("\tNationalite de fournisseur     : %s\n",(a+i)->fr.natio);
+			e++;
+		}
+	}
+	if(e==0) {
+		printf("Il y a la meme quantite!\n");
+	}
+/*	int r=0,c,*u,max,k=0;
 	char *t;
 	t=(char*)malloc(50*sizeof(char));
 	u=(int*)malloc(N*sizeof(int));
@@ -74,7 +117,7 @@ void typ(bijou *a,int N) {
 			if(c==0){
 				r++;
 			}
-		} *(u+i)=r; // a b b b a
+		} *(u+i)=r; 
 		r=0;
 	}
 	int p=0,o=0;
@@ -99,7 +142,7 @@ void typ(bijou *a,int N) {
 		printf("Prix du bijou %d: %f\n",k+1,(a+k)->prix);
 	    	k++;
 		}
-	}
+	}*/
 }
 void affich_fr(bijou *a,int N) {
 	char *c,k=0;
@@ -107,14 +150,18 @@ void affich_fr(bijou *a,int N) {
 	c=(char*)malloc(50*sizeof(char));
 	hona :printf("Entrez le code du fournisseur\n");
 	scanf("%s",c);
-	for (int i=0; i<N; i++) {
-		d=strcmp((a+i)->fr.code1,c);
-		if(d==0) {
-		printf("Marque du bijou %d : %s\n",k+1,(a+k)->marque);
-		printf("Code du bijou %d : %d\n",k+1,(a+k)->code);
-		printf("Annee de fabrication du bijou %d : %d\n",k+1,(a+k)->annee);
-		printf("Type du bijou %d : %s\n",k+1,(a+k)->type);
-		printf("Prix du bijou %d: %f\n",k+1,(a+k)->prix);
+	for (int i=0; i<N; i++) {	
+		if(*((a+i)->fr.code1)==*c) {
+		printf("------------>Le bijou%d<------------  \n",i+1);
+		printf("\tMarque du bijou                : %s\n",(a+i)->marque);
+		printf("\tCode du bijou                  : %d\n",(a+i)->code);
+		printf("\tAnnee de fabrication du bijou  : %d\n",(a+i)->annee);
+		printf("\tType du bijou                  : %s\n",(a+i)->type);
+		printf("\tPrix du bijou                  : %f\n",(a+i)->prix);
+		printf("\tNom de fournisseur             : %s\n",(a+i)->fr.nom);
+		printf("\tCode de fournisseur            : %s\n",(a+i)->fr.code1);
+		printf("\tAdresse de fournisseur         : %s\n",(a+i)->fr.adresse);
+		printf("\tNationalite de fournisseur     : %s\n",(a+i)->fr.natio);
 	    	k++;
 		}
 	}
@@ -129,11 +176,16 @@ void affich_code(bijou *a,int N) {
 	scanf("%d",&z);
 	for (int i=0; i<N; i++) {
 		if((a+i)->code==z) {
-		printf("Marque du bijou %d : %s\n",k+1,(a+k)->marque);
-		printf("Code du bijou %d : %d\n",k+1,(a+k)->code);
-		printf("Annee de fabrication du bijou %d : %d\n",k+1,(a+k)->annee);
-		printf("Type du bijou %d : %s\n",k+1,(a+k)->type);
-		printf("Prix du bijou %d: %f\n",k+1,(a+k)->prix);
+		printf("------------>Le bijou%d<------------  \n",i+1);
+		printf("\tMarque du bijou                : %s\n",(a+i)->marque);
+		printf("\tCode du bijou                  : %d\n",(a+i)->code);
+		printf("\tAnnee de fabrication du bijou  : %d\n",(a+i)->annee);
+		printf("\tType du bijou                  : %s\n",(a+i)->type);
+		printf("\tPrix du bijou                  : %f\n",(a+i)->prix);
+		printf("\tNom de fournisseur             : %s\n",(a+i)->fr.nom);
+		printf("\tCode de fournisseur            : %s\n",(a+i)->fr.code1);
+		printf("\tAdresse de fournisseur         : %s\n",(a+i)->fr.adresse);
+		printf("\tNationalite de fournisseur     : %s\n",(a+i)->fr.natio);
 	    	k++;
 		}
 	}
@@ -149,13 +201,17 @@ void affich_natio(bijou *a,int N) {
 	hona :printf("Entrez la nationnalite du fournisseur\n");
 	scanf("%s",q);
 	for (int i=0; i<N; i++) {
-		d=strcmp((a+i)->fr.natio,q);
-		if(d==0) {
-		printf("Marque du bijou %d : %s\n",k+1,(a+k)->marque);
-		printf("Code du bijou %d : %d\n",k+1,(a+k)->code);
-		printf("Annee de fabrication du bijou %d : %d\n",k+1,(a+k)->annee);
-		printf("Type du bijou %d : %s\n",k+1,(a+k)->type);
-		printf("Prix du bijou %d: %f\n",k+1,(a+k)->prix);
+		if(*((a+i)->fr.natio)==*q) {
+		printf("------------>Le bijou%d<------------  \n",i+1);
+		printf("\tMarque du bijou                : %s\n",(a+i)->marque);
+		printf("\tCode du bijou                  : %d\n",(a+i)->code);
+		printf("\tAnnee de fabrication du bijou  : %d\n",(a+i)->annee);
+		printf("\tType du bijou                  : %s\n",(a+i)->type);
+		printf("\tPrix du bijou                  : %f\n",(a+i)->prix);
+		printf("\tNom de fournisseur             : %s\n",(a+i)->fr.nom);
+		printf("\tCode de fournisseur            : %s\n",(a+i)->fr.code1);
+		printf("\tAdresse de fournisseur         : %s\n",(a+i)->fr.adresse);
+		printf("\tNationalite de fournisseur     : %s\n",(a+i)->fr.natio);
 	    	k++;
 		}
 	}
@@ -165,14 +221,14 @@ void affich_natio(bijou *a,int N) {
 	}
 }
 void ajout_debut_bij(bijou *a,int N){
-	int c;
+	int c,l;
 	a=(bijou*)realloc(a,(N+1)*sizeof(bijou));
 	for(int i=N;i>0;i--){
 		*(a+i)=*(a+i-1);	
 	}
 	printf("Entrez la marque du bijou \n");
-		scanf("%s",(a+0)->marque);
-    /*  poo:printf("Entrez le type du bijou\n",);
+		scanf("%s",(a)->marque);
+      poo:printf("Entrez le type du bijou\n");
 		scanf("%s",(a+0)->type);
 	for(int j=0;j<strlen(((a+0)->type));j++){
 		l=isalpha((a+0)->type[j]);
@@ -205,15 +261,14 @@ void ajout_debut_bij(bijou *a,int N){
 		here : printf("Entrez l'adresse du fournisseur de bijou\n");
 		scanf("%s",(a+0)->fr.adresse);
 		printf("Entrez la nationnalite du fournisseur du bijou\n");
-		scanf("%s",(a+0)->fr.natio);*/
-	
+		scanf("%s",(a+0)->fr.natio);
 	}	
 void ajout_fin_bij(bijou *a,int N){
-	int c;
+	int c,l;
 	a=(bijou*)realloc(a,(N+1)*sizeof(bijou));
 		printf("Entrez la marque du bijou \n");
 		scanf("%s",(a+N)->marque);
-    /*  poo:printf("Entrez le type du bijou\n",);
+      poo:printf("Entrez le type du bijou\n");
 		scanf("%s",(a+N)->type);
 	for(int j=0;j<strlen(((a+N)->type));j++){
 		l=isalpha((a+N)->type[j]);
@@ -221,7 +276,7 @@ void ajout_fin_bij(bijou *a,int N){
 			if(l==0){
 			printf("Le type ne doit contenir que des lettres!\n");
 			goto poo;
-		}*/
+		}
 	 printf("Entrez le code du bijou \n");
 		scanf("%d",&(a+N)->code);
 	ici :	printf("Entrez l'annee de fabrication du bijou \n");
@@ -251,15 +306,15 @@ void ajout_fin_bij(bijou *a,int N){
 	}
 void ajout_pos_bij(bijou *a,int N){
 	a=(bijou*)realloc(a,(N+1)*sizeof(bijou));
-		int e,c;
-		printf("Entrer la position .");
+		int e,c,l;
+		printf("Entrer la position :");
 		scanf("%d",&e);
-		for(int i=N;i>e;i--){  //push
+		for(int i=N;i>e;i--){  
 		*(a+i)=*(a+i-1);	
 	}
 	    printf("Entrez la marque du bijou \n");
 		scanf("%s",(a+e)->marque);
-    /*  poo:printf("Entrez le type du bijou\n",);
+   poo:printf("Entrez le type du bijou\n");
 		scanf("%s",(a+e)->type);
 	for(int j=0;j<strlen(((a+e)->type));j++){
 		l=isalpha((a+e)->type[j]);
@@ -267,7 +322,7 @@ void ajout_pos_bij(bijou *a,int N){
 			if(l==0){
 			printf("Le type ne doit contenir que des lettres!\n");
 			goto poo;
-		}*/
+		}
 	 printf("Entrez le code du bijou \n");
 		scanf("%d",&(a+e)->code);
 	ici :	printf("Entrez l'annee de fabrication du bijou \n");
@@ -362,8 +417,7 @@ int i,j,d,k=0;
     scanf("%s",u);
     if(u){
     for(j=0;j<N;j++){
-  d=strcmp((a+j)->marque,u);
-        if(d=0){
+        if(*((a+j)->marque)=*u){
         k++;
         }
     }
@@ -463,7 +517,7 @@ int main () {
 	printf("2-Afficher les bijoux du fournisseur ayant le plus de bijoux dans la boutique.\n");
 	printf("3-Afficher les bijoux selon les options suivantes : (Par code de fournisseur, par le code du bijou, par la nationnalite du fournisseur).\n");
 	printf("4-Ajouter un bijou selon les options suivantes : (Au debut, a la fin du tableau, en une position donnee, apres le 3eme bijou de sa meme marque).\n");
-	printf("5-Supprimer un livre selon les options suivantes : (Au debut, a la fin en une position donnee, par marque, par prix, dont le nom de fournisseur contient 2 fois une lettre donnée).\n");
+	printf("5-Supprimer un livre selon les options suivantes : (Au debut, a la fin en une position donnee, par marque, par prix, dont le nom de fournisseur contient 2 fois une lettre donnÃ©e).\n");
 	printf("6-Quitter le programme.\n");
 	printf("Entrez votre choix :\n");
 	scanf("%d",&p);
@@ -476,7 +530,7 @@ int main () {
 		case 2:exit(0);break;
 		default : printf("Choix erronnee!\n");goto hier3;
 	};break;
-		case 2: typ(khatm,n);
+		case 2: afficher_plus_bijoux(khatm,n);
 		hier4:printf("\n1-Retour\n2-Quitter le programme\n");
 	scanf("%d",&k);
 	switch(k) {
@@ -539,7 +593,7 @@ int main () {
 					default:printf("Choix erronnee!\n");goto ici6;
 				}
 				break;
-		ici5:case 5:	printf("1-Au debut.\n2-A la fin.\n3-En une position donnee.\n4-Par marque.\n5-Par prix\n6-Dont le nom de fournisseur contient 2 fois une lettre donnée\n7-Retour\n");
+		ici5:case 5:	printf("1-Au debut.\n2-A la fin.\n3-En une position donnee.\n4-Par marque.\n5-Par prix\n6-Dont le nom de fournisseur contient 2 fois une lettre donnÃ©e\n7-Retour\n");
 				scanf("%d",&w);	
 				switch(w){
 					case 1:supp_debut_bij(khatm,n);afficher(khatm,n-1);hier12:printf("\n1-Retour\n2-Quitter le programme\n");
