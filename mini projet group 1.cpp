@@ -359,7 +359,7 @@ poo:
 				for(int j=0; j<strlen(((a+i)->type)); j++) {
 					l=isalpha((a+i+1)->type[j]);
 				}
-				if(l==0) {
+				if(l!=0) {
 					printf("Le type ne doit contenir que des lettres!\n");
 					goto poo;
 				}
@@ -397,13 +397,13 @@ here :
 	}
 	printf("%d***************************************\n",j);
 	if(j==0) {
-	printf("Cette marque n'exicte pas \n");
+	printf("Cette marque n'existe pas \n");
 	} 
 	if(j==1) {
-		printf("Cette marque exicte seulment une seul fois\n");
+		printf("Cette marque existe seulement une seule fois\n");
 	} 
     if(j==2) {
-		printf("Cette marque exicte seulment une deux fois\n");
+		printf("Cette marque existe seulement deux fois\n");
 	}
 	if(j==3) {
 	afficher(a,N+1);
