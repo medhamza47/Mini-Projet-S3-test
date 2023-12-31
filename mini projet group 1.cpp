@@ -16,44 +16,44 @@ void ajouter (bijou *a,int N) {
 	for(int i=0; i<N; i++) {
 		printf("Entrez la marque du bijou %d\n",i+1);
 		scanf("%s",(a+i)->marque);
-/*poo:
-		printf("Entrez le type du bijou %d\n",i+1);
-		scanf("%s",(a+i)->type);
-		for(int j=0; j<strlen(((a+i)->type)); j++) {
-			l=isalpha((a+i)->type[j]);
-		}
-		if(l==0) {
-			printf("Le type ne doit contenir que des lettres!\n");
-			goto poo;
-		}
-		printf("Entrez le code du bijou %d\n",i+1);
-		scanf("%d",&(a+i)->code);
-ici :
-		printf("Entrez l'annee de fabrication du bijou %d\n",i+1);
-		scanf("%d",&(a+i)->annee);
-		if((a+i)->annee>2023 || (a+i)->annee <0) {
-			printf("L'annee est incorrecte !\n");
-			goto ici;
-		}
-		printf("Entrez le prix du bijou %d\n",i+1);
-		scanf("%f",&(a+i)->prix);
-foo:
-		printf("Entrez le nom du fournisseur du bijou %d\n",i+1);
-		scanf("%s",(a+i)->fr.nom);
-		for(int j=0; j<strlen(((a+i)->fr.nom)); j++) {
-			c=isalpha((a+i)->fr.nom[j]);
-		}
-		if(c==0) {
-			printf("Le nom du fournisseur ne doit contenir que des lettres!\n");
-			goto foo;
-		}
-		printf("Entrez le code du fournisseur du bijou %d\n",i+1);
-		scanf("%s",(a+i)->fr.code1);
-here :
-		printf("Entrez l'adresse du fournisseur de bijou %d\n",i+1);
-		scanf("%s",(a+i)->fr.adresse);
-		printf("Entrez la nationnalite du fournisseur du bijou %d\n",i+1);
-		scanf("%s",(a+i)->fr.natio);*/
+		/*poo:
+				printf("Entrez le type du bijou %d\n",i+1);
+				scanf("%s",(a+i)->type);
+				for(int j=0; j<strlen(((a+i)->type)); j++) {
+					l=isalpha((a+i)->type[j]);
+				}
+				if(l==0) {
+					printf("Le type ne doit contenir que des lettres!\n");
+					goto poo;
+				}
+				printf("Entrez le code du bijou %d\n",i+1);
+				scanf("%d",&(a+i)->code);
+		ici :
+				printf("Entrez l'annee de fabrication du bijou %d\n",i+1);
+				scanf("%d",&(a+i)->annee);
+				if((a+i)->annee>2023 || (a+i)->annee <0) {
+					printf("L'annee est incorrecte !\n");
+					goto ici;
+				}
+				printf("Entrez le prix du bijou %d\n",i+1);
+				scanf("%f",&(a+i)->prix);
+		foo:
+				printf("Entrez le nom du fournisseur du bijou %d\n",i+1);
+				scanf("%s",(a+i)->fr.nom);
+				for(int j=0; j<strlen(((a+i)->fr.nom)); j++) {
+					c=isalpha((a+i)->fr.nom[j]);
+				}
+				if(c==0) {
+					printf("Le nom du fournisseur ne doit contenir que des lettres!\n");
+					goto foo;
+				}
+				printf("Entrez le code du fournisseur du bijou %d\n",i+1);
+				scanf("%s",(a+i)->fr.code1);
+		here :
+				printf("Entrez l'adresse du fournisseur de bijou %d\n",i+1);
+				scanf("%s",(a+i)->fr.adresse);
+				printf("Entrez la nationnalite du fournisseur du bijou %d\n",i+1);
+				scanf("%s",(a+i)->fr.natio);*/
 	}
 }
 void afficher (bijou *a, int N) {
@@ -397,16 +397,16 @@ here :
 	}
 	printf("%d***************************************\n",j);
 	if(j==0) {
-	printf("Cette marque n'existe pas \n");
-	} 
+		printf("Cette marque n'existe pas \n");
+	}
 	if(j==1) {
 		printf("Cette marque existe seulement une seule fois\n");
-	} 
-    if(j==2) {
+	}
+	if(j==2) {
 		printf("Cette marque existe seulement deux fois\n");
 	}
 	if(j==3) {
-	afficher(a,N+1);
+		afficher(a,N+1);
 	}
 
 }
@@ -497,14 +497,16 @@ hier :
 }
 void supp_lettre_bij(bijou *a, int N) {
 	char l;
-	int b=0,c=0,p=0,M=0;
+	int b=0,s=0,c=0,p=0,M=0;
 haha:
+pipo:
 	printf("Entrez la lettre :\n");
 	scanf(" %c",&l);
 	for (int i=0; i<N; i++) {
 		for (int j=0; (a+i)->fr.nom[j]!='\0'; j++) {
 			if((a+i)->fr.nom[j]==l) {
 				b++;
+				s++;
 				if(b>=2) {
 					M++;
 					break;
@@ -516,6 +518,10 @@ haha:
 	if (M==0) {
 		printf("La lettre n'existe pas deux fois !\n");
 		goto haha;
+	}
+	if(s==0) {
+		printf("La lettre n'existe pas");
+		goto pipo;
 	}
 	for(int i=0; i<N; i++) {
 		for (int j=0; (a+i)->fr.nom[j]!='\0'; j++) {
@@ -548,13 +554,14 @@ la :
 		printf("Ajoutez les bijoux :\n");
 		ajouter(khatm,n);
 hier2:
-		printf("**************MENU GESTION DES LIVRES**************\n");
-		printf("1-Afficher la boutique.\n");
-		printf("2-Afficher les bijoux du fournisseur ayant le plus de bijoux dans la boutique.\n");
-		printf("3-Afficher les bijoux selon les options suivantes : (Par code de fournisseur, par le code du bijou, par la nationnalite du fournisseur).\n");
-		printf("4-Ajouter un bijou selon les options suivantes : (Au debut, a la fin du tableau, en une position donnee, apres le 3eme bijou de sa meme marque).\n");
-		printf("5-Supprimer un livre selon les options suivantes : (Au debut, a la fin en une position donnee, par marque, par prix, dont le nom de fournisseur contient 2 fois une lettre donnée).\n");
-		printf("6-Quitter le programme.\n");
+		printf("*****************************MENU GESTION DES LIVRES*****************************\n");
+		printf("* 1-Afficher la boutique.\n");
+		printf("* 2-Afficher les bijoux du fournisseur ayant le plus de bijoux dans la boutique.\n");
+		printf("* 3-Afficher les bijoux selon les options suivantes : \n*\t\t-> Par code de fournisseur.\n*\t\t-> Par le code du bijou.\n*\t\t-> Par la nationnalite du fournisseur.\n");
+		printf("* 4-Ajouter un bijou selon les options suivantes : \n*\t\t-> Au debut.\n*\t\t-> A la fin du tableau.\n*\t\t-> En une position donnee.\n*\t\t-> Apres le 3eme bijou de sa meme marque.\n");
+		printf("* 5-Supprimer un livre selon les options suivantes : \n*\t\t->Au debut.\n*\t\t-> A la fin en une position donnee.\n*\t\t-> Par marque.\n*\t\t-> Par prix.\n*\t\t-> Dont le nom de fournisseur contient 2 fois une lettre donnee.\n");
+		printf("* 6-Quitter le programme.\n");
+		printf("**********************************************************************************\n");
 		printf("Entrez votre choix :\n");
 		scanf("%d",&p);
 		switch (p) {

@@ -463,7 +463,9 @@ int main () {
 	ajouter_bijou(b,T);
 	if(b) {         
 		do {
-			printf("1/Afficher le stock\n2/Afficher le bijou du fournisseur ayant le plus des bijoux\n3-Afficher les bijoux :\n\ta-D'un fournisseur donnee\n\tb-Ayant un code donnee\n\tc-Des fournisseurs ayant une nationalite donnee\n\tx-Quiter\n4-Ajouter les bijoux :\n\ta-Au debut du tableau\n\tb-A la fin du tableau\n\tc-En une position donnee\n\td-Apres le 3eme bijou de sa meme marque\n\tx-Quitter\n\n5-Supprimer les bijoux :\n\ta-Au debut\n\tb-A la fin du tableau\n\tc-En une position donnee\n\td-Par marque\n\te-Par prix\n\tf-dont le nom de fournisseur contient 2 fois une lettre donnee\n\tx-Quitter\n6-Quitter le programme\n");
+			printf("*****************************MENU GESTION DES LIVRES*****************************\n");
+			printf("1/Afficher le stock\n2/Afficher le bijou du fournisseur ayant le plus des bijoux\n3-Afficher les bijoux :\n\t(a-D'un fournisseur donnee,b-Ayant un code donnee,c-Des fournisseurs ayant une nationalite donnee,x-Quiter)\n4-Ajouter les bijoux :\n\t(a-Au debut du tableau,b-A la fin du tableau,c-En une position donnee,d-Apres le 3eme bijou de sa meme marque,x-Quitter)\n5-Supprimer les bijoux :\n\t(a-Au debut,b-A la fin du tableau,c-En une position donneed-Par marque,e-Par prix,f-dont le nom de fournisseur contient 2 fois une lettre donnee,x-Quitter)\n6-Quitter le programme\n");
+			printf("**********************************************************************************\n");
 			scanf("%d",&choix);
 			switch (choix) {
 				case 1:
