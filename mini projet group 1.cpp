@@ -2,6 +2,8 @@
 #include<string.h>
 #include<stdlib.h>
 #include<ctype.h>
+#include<windows.h>
+int N;
 typedef struct {
 	char code1[50],nom[50],natio[50],adresse[50];
 } fournisseur;
@@ -36,18 +38,18 @@ void ajouter (bijou *a,int N) {
 					goto ici;
 				}
 				printf("Entrez le prix du bijou %d\n",i+1);
-				scanf("%f",&(a+i)->prix);
+				scanf("%f",&(a+i)->prix);*/
 		foo:
 				printf("Entrez le nom du fournisseur du bijou %d\n",i+1);
 				scanf("%s",(a+i)->fr.nom);
-				for(int j=0; j<strlen(((a+i)->fr.nom)); j++) {
+			for(int j=0; j<strlen(((a+i)->fr.nom)); j++) {
 					c=isalpha((a+i)->fr.nom[j]);
 				}
 				if(c==0) {
 					printf("Le nom du fournisseur ne doit contenir que des lettres!\n");
 					goto foo;
-				}
-				printf("Entrez le code du fournisseur du bijou %d\n",i+1);
+					}
+			/*	printf("Entrez le code du fournisseur du bijou %d\n",i+1);
 				scanf("%s",(a+i)->fr.code1);
 		here :
 				printf("Entrez l'adresse du fournisseur de bijou %d\n",i+1);
@@ -62,7 +64,7 @@ void afficher (bijou *a, int N) {
 	for (int i=0; i<N; i++) {
 		printf("------------>Le bijou%d<------------  \n",i+1);
 		printf("\tMarque du bijou                : %s\n",(a+i)->marque);
-		printf("\tCode du bijou                  : %d\n",(a+i)->code);
+	/*	printf("\tCode du bijou                  : %d\n",(a+i)->code);
 		printf("\tAnnee de fabrication du bijou  : %d\n",(a+i)->annee);
 		printf("\tType du bijou                  : %s\n",(a+i)->type);
 		printf("\tPrix du bijou                  : %f\n",(a+i)->prix);
@@ -70,7 +72,7 @@ void afficher (bijou *a, int N) {
 		printf("\tCode de fournisseur            : %s\n",(a+i)->fr.code1);
 		printf("\tAdresse de fournisseur         : %s\n",(a+i)->fr.adresse);
 		printf("\tNationalite de fournisseur     : %s\n",(a+i)->fr.natio);
-
+*/
 	}
 }
 void afficher_plus_bijoux(bijou *a,int N) {
@@ -192,14 +194,15 @@ hona :
 	}
 }
 void ajout_debut_bij(bijou *a,int N) {
-	int c,l;
+	int c,l,s=0;
 	a=(bijou*)realloc(a,(N+1)*sizeof(bijou));
-	for(int i=N; i>0; i--) {
+	for(int i=N+s; i>0; i--) {
 		*(a+i)=*(a+i-1);
 	}
+	s++;
 	printf("Entrez la marque du bijou \n");
 	scanf("%s",(a)->marque);
-poo:
+/*poo:
 	printf("Entrez le type du bijou\n");
 	scanf("%s",(a+0)->type);
 	for(int j=0; j<strlen(((a+0)->type)); j++) {
@@ -236,14 +239,14 @@ here :
 	printf("Entrez l'adresse du fournisseur de bijou\n");
 	scanf("%s",(a+0)->fr.adresse);
 	printf("Entrez la nationnalite du fournisseur du bijou\n");
-	scanf("%s",(a+0)->fr.natio);
+	scanf("%s",(a+0)->fr.natio);*/
 }
 void ajout_fin_bij(bijou *a,int N) {
 	int c,l;
 	a=(bijou*)realloc(a,(N+1)*sizeof(bijou));
 	printf("Entrez la marque du bijou \n");
 	scanf("%s",(a+N)->marque);
-poo:
+/*poo:
 	printf("Entrez le type du bijou\n");
 	scanf("%s",(a+N)->type);
 	for(int j=0; j<strlen(((a+N)->type)); j++) {
@@ -281,7 +284,7 @@ here :
 	scanf("%s",(a+N)->fr.adresse);
 	printf("Entrez la nationnalite du fournisseur du bijou\n");
 	scanf("%s",(a+N)->fr.natio);
-
+*/
 }
 void ajout_pos_bij(bijou *a,int N) {
 	a=(bijou*)realloc(a,(N+1)*sizeof(bijou));
@@ -289,16 +292,16 @@ void ajout_pos_bij(bijou *a,int N) {
 toto:
 	printf("Entrer la position :");
 	scanf("%d",&e);
-	if(e<0||e>=N) {
+	if(e<0||e>N) {
 		printf("La position n'existe pas\n");
 		goto toto;
 	}
 	for(int i=N; i>e; i--) {
-		*(a+i)=*(a+i-1);
+		*(a+i)=*(a+i-1); 
 	}
 	printf("Entrez la marque du bijou \n");
 	scanf("%s",(a+e)->marque);
-poo:
+/*poo:
 	printf("Entrez le type du bijou\n");
 	scanf("%s",(a+e)->type);
 	for(int j=0; j<strlen(((a+e)->type)); j++) {
@@ -335,7 +338,7 @@ here :
 	printf("Entrez l'adresse du fournisseur de bijou\n");
 	scanf("%s",(a+e)->fr.adresse);
 	printf("Entrez la nationnalite du fournisseur du bijou\n");
-	scanf("%s",(a+e)->fr.natio);
+	scanf("%s",(a+e)->fr.natio);*/
 }
 void ajout_meme_bij(bijou *a,int N) {
 	char *v,c,l;
@@ -359,7 +362,7 @@ poo:
 				for(int j=0; j<strlen(((a+i)->type)); j++) {
 					l=isalpha((a+i+1)->type[j]);
 				}
-				if(l!=0) {
+				if(l==0) {
 					printf("Le type ne doit contenir que des lettres!\n");
 					goto poo;
 				}
@@ -395,7 +398,6 @@ here :
 			}
 		}
 	}
-	printf("%d***************************************\n",j);
 	if(j==0) {
 		printf("Cette marque n'existe pas \n");
 	}
@@ -406,7 +408,7 @@ here :
 		printf("Cette marque existe seulement deux fois\n");
 	}
 	if(j==3) {
-		afficher(a,N+1);
+		N++;afficher(a,N);
 	}
 
 }
@@ -425,7 +427,7 @@ void supp_pos_bij(bijou *a, int N) {
 la:
 	printf("Entrer la position :\n");
 	scanf("%d",&u);
-	for( i=0; i<N-1; i++) {
+	for( i=0; i<N; i++) {
 		if(i==u) {
 			*(a+i)=*(a+i+1);
 			k++;
@@ -537,22 +539,41 @@ pipo:
 		p=0;
 	}
 	a=(bijou*)realloc(a,(N-M)*sizeof(bijou));
-	afficher(a,N-M);
+	N=N-M;
+	afficher(a,N);
+}
+void playWelcomeSong() {
+    int notes[] = { 523, 587, 659, 587, 523, 523, 587 };
+    int duration[] = { 300, 300, 300, 300, 300, 300, 600 };
+
+    for (int i = 0; i < sizeof(notes) / sizeof(notes[0]); ++i) {
+        Beep(notes[i], duration[i]);
+        Sleep(100); // Pause entre chaque note
+    }
 }
 int main () {
-	int n,y,p,w,s,k;
-	bijou *khatm;
+	int y,p,w,s,k;
+	bijou *a;
+	printf("\t\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+       "\t\t\t\t\t\t~                                                                 ~\n"
+       "\t\t\t\t\t\t~            B i e n v e n u e   a u   P r o j e t                ~\n"
+       "\t\t\t\t\t\t~    r e a l i s e   p a r   M o h a m e d   E L   A A M R A N I  ~\n"
+       "\t\t\t\t\t\t~           e t   M o h a m e d   H a m z a   I B N T A L I B     ~\n"
+       "\t\t\t\t\t\t~      e t   M o u n t a s s i r   C H A G H O U G H              ~\n"
+       "\t\t\t\t\t\t~                                                                 ~\n"
+       "\t\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n");
+       playWelcomeSong();
 la :
-	printf("Entrez le nombre des bijoux a ajouter\n");
-	scanf("%d",&n);
-	if(n>50 || n<1) {
+	printf("---->Entrez le nombre des bijoux a ajouter\n");
+	scanf("%d",&N);
+	if(N>50 || N<1) {
 		printf("Le nombre est incorrect !\n");
 		goto la;
 	}
-	khatm=(bijou*)malloc(n*sizeof(bijou));
-	if(khatm) {
+		a=(bijou*)malloc((N+10)*sizeof(bijou));
+	if(a) {
 		printf("Ajoutez les bijoux :\n");
-		ajouter(khatm,n);
+		ajouter(a,N);
 hier2:
 		printf("*****************************MENU GESTION DES LIVRES*****************************\n");
 		printf("* 1-Afficher la boutique.\n");
@@ -566,7 +587,7 @@ hier2:
 		scanf("%d",&p);
 		switch (p) {
 			case 1:
-				afficher(khatm,n);
+				afficher(a,N);
 hier3:
 				printf("\n1-Retour\n2-Quitter le programme\n");
 				scanf("%d",&k);
@@ -583,7 +604,7 @@ hier3:
 				};
 				break;
 			case 2:
-				afficher_plus_bijoux(khatm,n);
+				afficher_plus_bijoux(a,N);
 hier4:
 				printf("\n1-Retour\n2-Quitter le programme\n");
 				scanf("%d",&k);
@@ -605,7 +626,7 @@ ici7:
 				scanf("%d",&s);
 				switch(s) {
 					case 1:
-						affich_fr(khatm,n);
+						affich_fr(a,N);
 hier5:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
@@ -622,7 +643,7 @@ hier5:
 						}
 						break;
 					case 2:
-						affich_code(khatm,n);
+						affich_code(a,N);
 hier6:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
@@ -639,7 +660,7 @@ hier6:
 						}
 						break;
 					case 3:
-						affich_natio(khatm,n);
+						affich_natio(a,N);
 hier7:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
@@ -669,8 +690,8 @@ ici6:
 				scanf("%d",&y);
 				switch(y) {
 					case 1:
-						ajout_debut_bij(khatm,n);
-						afficher(khatm,n+1);
+						ajout_debut_bij(a,N);
+						N++;afficher(a,N);
 hier8:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
@@ -687,8 +708,8 @@ hier8:
 						}
 						break;
 					case 2:
-						ajout_fin_bij(khatm,n);
-						afficher(khatm,n+1);
+						ajout_fin_bij(a,N);
+					N++;afficher(a,N);
 hier9:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
@@ -705,8 +726,10 @@ hier9:
 						}
 						break;
 					case 3:
-						ajout_pos_bij(khatm,n);
-						afficher(khatm,n+1);
+						ajout_pos_bij(a,N);
+						N++;
+						afficher(a,N);	/////////////////////////////////////////////////////
+					
 hier10:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
@@ -723,7 +746,7 @@ hier10:
 						}
 						break;
 					case 4:
-						ajout_meme_bij(khatm,n);
+						ajout_meme_bij(a,N);
 hier11:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
@@ -749,12 +772,12 @@ hier11:
 				break;
 ici5:
 			case 5:
-				printf("1-Au debut.\n2-A la fin.\n3-En une position donnee.\n4-Par marque.\n5-Par prix\n6-Dont le nom de fournisseur contient 2 fois une lettre donnée\n7-Retour\n");
+				printf("1-Au debut.\n2-A la fin.\n3-En une position donnee.\n4-Par marque.\n5-Par prix\n6-Dont le nom de fournisseur contient 2 fois une lettre donnee\n7-Retour\n");
 				scanf("%d",&w);
 				switch(w) {
 					case 1:
-						supp_debut_bij(khatm,n);
-						afficher(khatm,n-1);
+						supp_debut_bij(a,N);
+						N--;afficher(a,N);
 hier12:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
@@ -771,8 +794,8 @@ hier12:
 						}
 						break;
 					case 2:
-						supp_fin_bij(khatm,n);
-						afficher(khatm,n-1);
+						supp_fin_bij(a,N);
+						N--;afficher(a,N);
 hier13:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
@@ -789,8 +812,8 @@ hier13:
 						}
 						break;
 					case 3:
-						supp_pos_bij(khatm,n);
-						afficher(khatm,n-1);
+						supp_pos_bij(a,N);
+						N--;afficher(a,N);
 hier14:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
@@ -807,7 +830,7 @@ hier14:
 						}
 						break;
 					case 4:
-						supp_marque_bij(khatm,n);
+						supp_marque_bij(a,N);
 hier15:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
@@ -824,7 +847,7 @@ hier15:
 						}
 						break;
 					case 5:
-						supp_prix_bij(khatm,n);
+						supp_prix_bij(a,N);
 hier16:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
@@ -841,7 +864,7 @@ hier16:
 						}
 						break;
 					case 6:
-						supp_lettre_bij(khatm,n);
+						supp_lettre_bij(a,N);
 hier17:
 						printf("\n1-Retour\n2-Quitter le programme\n");
 						scanf("%d",&k);
