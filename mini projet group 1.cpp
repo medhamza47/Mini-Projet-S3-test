@@ -18,7 +18,7 @@ void ajouter (bijou *a,int N) {
 	for(int i=0; i<N; i++) {
 		printf("Entrez la marque du bijou %d\n",i+1);
 		scanf("%s",(a+i)->marque);
-/*poo:
+poo:
 		printf("Entrez le type du bijou %d\n",i+1);
 		scanf("%s",(a+i)->type);
 		for(int j=0; j<strlen(((a+i)->type)); j++) {
@@ -27,7 +27,7 @@ void ajouter (bijou *a,int N) {
 		if(l==0) {
 			printf("Le type ne doit contenir que des lettres!\n");
 			goto poo;
-		}*/
+		}
 laba:
 		printf("Entrez le code du bijou %d\n",i+1);
 		scanf("%d",&(a+i)->code);
@@ -37,7 +37,7 @@ laba:
 				goto laba;
 			}
 		}
-/*ici :
+ici :
 		printf("Entrez l'annee de fabrication du bijou %d\n",i+1);
 		scanf("%d",&(a+i)->annee);
 		if((a+i)->annee>2023 || (a+i)->annee <0) {
@@ -58,12 +58,18 @@ foo:
 		}
 		printf("Entrez le code du fournisseur du bijou %d\n",i+1);
 		scanf("%s",(a+i)->fr.code1);
+		for(int f=0; f<N; f++) {
+			if(*((a+i)->fr.code1)==*((a+f)->fr.code1) && i!=f) {
+				printf("Ce code existe deja\n");
+				goto laba;
+			}
+		}
 here :
 		printf("Entrez l'adresse du fournisseur de bijou %d\n",i+1);
 		scanf("%s",(a+i)->fr.adresse);
 		printf("Entrez la nationnalite du fournisseur du bijou %d\n",i+1);
 		scanf("%s",(a+i)->fr.natio);
-	*/}
+	}
 }
 void afficher (bijou *a, int N) {
 	int k;
@@ -71,7 +77,7 @@ void afficher (bijou *a, int N) {
 	for (int i=0; i<N; i++) {
 		printf("------------>Le bijou%d<------------  \n",i+1);
 		printf("\tMarque du bijou                : %s\n",(a+i)->marque);
-		/*	printf("\tCode du bijou                  : %d\n",(a+i)->code);
+			printf("\tCode du bijou                  : %d\n",(a+i)->code);
 			printf("\tAnnee de fabrication du bijou  : %d\n",(a+i)->annee);
 			printf("\tType du bijou                  : %s\n",(a+i)->type);
 			printf("\tPrix du bijou                  : %f\n",(a+i)->prix);
@@ -79,7 +85,7 @@ void afficher (bijou *a, int N) {
 			printf("\tCode de fournisseur            : %s\n",(a+i)->fr.code1);
 			printf("\tAdresse de fournisseur         : %s\n",(a+i)->fr.adresse);
 			printf("\tNationalite de fournisseur     : %s\n",(a+i)->fr.natio);
-		*/
+		
 	}
 }
 void afficher_plus_bijoux(bijou *a,int N) {
@@ -248,8 +254,15 @@ foo:
 		printf("Le nom du fournisseur ne doit contenir que des lettres!\n");
 		goto foo;
 	}
-	printf("Entrez le code du fournisseur du bijou\n");
+lab1:
+    printf("Entrez le code du fournisseur du bijou\n");
 	scanf("%s",(a+0)->fr.code1);
+		for(int i=1; i<N+1; i++) {
+			if(*((a+i)->fr.code1)==*((a)->fr.code1) ) {
+				printf("Ce code existe deja\n");
+				goto lab1;
+			}
+		}
 here :
 	printf("Entrez l'adresse du fournisseur de bijou\n");
 	scanf("%s",(a+0)->fr.adresse);
@@ -300,8 +313,15 @@ foo:
 		printf("Le nom du fournisseur ne doit contenir que des lettres!\n");
 		goto foo;
 	}
+lab2:
 	printf("Entrez le code du fournisseur du bijou\n");
 	scanf("%s",(a+N)->fr.code1);
+		for(int i=0; i<N; i++) {
+			if(*((a+i)->fr.code1)==*((a+N)->fr.code1)) {
+				printf("Ce code existe deja\n");
+				goto lab2;
+			}
+		}
 here :
 	printf("Entrez l'adresse du fournisseur de bijou\n");
 	scanf("%s",(a+N)->fr.adresse);
@@ -364,6 +384,12 @@ foo:
 	}
 	printf("Entrez le code du fournisseur du bijou\n");
 	scanf("%s",(a+e)->fr.code1);
+		for(int i=0; i<N+1; i++) {
+			if(*((a+i)->fr.code1)==*((a+e)->fr.code1) && i!=e) {
+				printf("Ce code existe deja\n");
+				goto laba3;
+			}
+		}
 here :
 	printf("Entrez l'adresse du fournisseur de bijou\n");
 	scanf("%s",(a+e)->fr.adresse);
@@ -424,8 +450,15 @@ foo:
 					printf("Le nom du fournisseur ne doit contenir que des lettres!\n");
 					goto foo;
 				}
+lab4:
 				printf("Entrez le code du fournisseur du bijou %d\n",i+1);
-				scanf("%s",(a+i+1)->fr.code1);
+				scanf("%s",(a+i+1)->fr.code1); 
+					for(int j=0; j<N; j++) {
+						if(*((a+j)->fr.code1)==*((a+i+1)->fr.code1)) {
+							printf("Ce code existe deja\n");
+							goto lab4;
+						}
+					}
 here :
 				printf("Entrez l'adresse du fournisseur de bijou %d\n",i+1);
 				scanf("%s",(a+i+1)->fr.adresse);
